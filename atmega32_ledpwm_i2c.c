@@ -30,10 +30,9 @@ AVR_MCU(F_CPU, "atmega32");
 //#include "../shared/avr_twi_master.h" // NOT USED
 #include "../shared/twimaster.h"
 
-#include "LED/conf.h"
-//#include "LED/rtc-library-gcc/twi.h"
-#include "LED/rtc-library-gcc/rtc.h"
-#include "LED/uartlibrary/uart.h"
+#include "conf.h"
+#include "rtc-library-gcc/rtc.h"
+#include "uart.h"
 //
 // eample putchar UART usage, Works on FreeBSD better !!!
 //
@@ -47,8 +46,8 @@ static int uart_putchar(char c, FILE *stream) {
 
 //
 // printf
-static FILE mystdout = FDEV_SETUP_STREAM( 
-		uart_putc //putc causes problems Why ???
+static FILE mystdout = FDEV_SETUP_STREAM( // Use above if problems detected
+		uart_putc
 		, NULL
 		, _FDEV_SETUP_WRITE);
 //				
