@@ -137,8 +137,8 @@ void set_fan_pwm(uint8_t fan_a_duty, uint8_t fan_b_duty)
 /*
 	ATOMIC_BLOCK(ATOMIC_RESTORESTATE)
 	{
-		compbuff[FAN_A] = pwm_count; // For now have both to the same speed
-		compbuff[FAN_B] = pwm_count;
+		compbuff[FAN_A] = fan_a_duty; 
+		compbuff[FAN_B] = fan_b_duty;
 	}
 	*/
 	OCR1A = fan_a_duty;
