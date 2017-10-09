@@ -56,14 +56,12 @@ void fan_timer1_init()
 	DDRD = 0x30;                      // Set Port D4 and d5 as Output
     
     	TCCR1A = (1<<WGM10)|(1<<COM1A1)   // Set up the two Control registers of Timer1.
-               | (1<<COM1B1);             // Wave Form Generation is Fast PWM 8 Bit,
-    	TCCR1B = /*|(1<<CS12)*/     // OC1A and OC1B are cleared on compare match
-               (1<<CS10)/*|(1<<CS11)*/;               // and set at BOTTOM. Clock Prescaler CS12 CS10 is 1024, CS11 is 8, CS10 no preskaler
-// WGM11 and 12 - FastPWM 9bit       
+               | (1<<COM1B1);             // 
+    	TCCR1B = (1<<WGM12)/*|(1<<CS12)*/     // OC1A and OC1B are cleared on compare match
+               | (1<<CS10)/*|(1<<CS11)*/;               // and set at BOTTOM. Clock Prescaler CS12 CS10 is 1024, CS11 is 8, CS10 no preskaler
+// WGM11 and 12 - FastPWM 9bit       	
     	OCR1A = 0;                       // Dutycycle of OC1A = 0%
-    	OCR1B = 0;                      // Dutycycle of OC1B = 0%
-	
-	TCNT1 = 0;			// Initialise the counter
+    	OCR1B = 0;                      // Dutycycle of OC1B = 0%	
 	
 	sei();
 }
