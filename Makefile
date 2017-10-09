@@ -36,7 +36,7 @@ LDFLAGS += -lpthread
 all: obj ${firmware} ${target} 
 
 include ${simavr}/Makefile.common
-include ../Makefile.opengl
+include ${simavr}/examples/Makefile.opengl
 
 atmega32_${target}.axf: atmega32_${target}.c \
 	twimaster.c \
