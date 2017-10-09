@@ -44,10 +44,12 @@ ISR (TIMER0_OVF_vect)
 //	if(compare[11] == softcount) CH11_CLEAR;  
 }
 //
+/*
 ISR (TIMER0_COMP_vect) 
 {
 	TCNT0 = 0; // Reset Timer0
 }
+*/
 //
 void fan_timer1_init()
 {
