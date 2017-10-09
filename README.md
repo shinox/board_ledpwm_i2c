@@ -3,10 +3,6 @@ based on simavr, Atmega32 test of pwm dimming LED and FAN control,
 
 !!! NO WARRANTY IS OFFERED NOR ANY RESPONSIBILITY TAKEN FOR USAGE OF THIS CODE AND OR HARDWARE DESIGN !!!
 
-To try:
-
-    Cd to "simavr/examples/" then clone and "make".
-
 Idea to test ability of Atmega32 to software PWM 10x 10W LED lights and cooling FANs, providing cheap light alternative for Marine Aquarium.
 
 It is based on various other projects, mainly "simavr" for testing and core functionality, AVR note 136 (AVR136) modified to supply ~973Hz PWM,
@@ -19,6 +15,12 @@ Requires:
 1. Eternal DS3231 module to function in Live mode,
 2. Optionally WiFi ns8266 can be connected but needs separate code for Website monitoring and Controller (Dev sketch exists but not ready for publication yet),
 
+
+To try:
+
+    Cd to "simavr/examples/" then clone and "make".
+    
+    
 What works:
 1. After power on software will try to slowly rise or dimm brightness of all connected LEDs depending on DAY/NIGHT settings in "conf.h", 
 2. Time is obtained by connecting to ds3231 RTC module using SDA/SCL pins (TWI/I2C). The TOP brightness then will be saved to AT24C32 flash onboard DS3231 module,
