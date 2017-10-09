@@ -8,10 +8,10 @@
 //
 #define LOOP_DELAY     2000
 // Top counter value (OC0 = TOP), Very Important Choice !!!
-#define TOP	       32 // 64 = 2xPWM softw freq, 32 = 4x softw PWM freq, 
+#define TOP	       16 // 64 = 2xPWM softw freq, 32 = 4x softw PWM freq, 16 = 8x but only 16 steps 
 // Calculation depends strictly from OCR0 value, 64 ~= 50% for OCR0 = TOP = 127
 //
-#define NIGHTMODE      4       // Roughly value of 10% for choosen TOP = 32 value
+#define NIGHTMODE      1       // Roughly value of 10% for choosen TOP = 32 value
 //
 #define BRIGHTNESS_INCREMENT 1
 //
