@@ -61,10 +61,7 @@ void fan_timer1_init()  /* WORK IN PROGRESS */
    	TCCR1B |= (1<<CS10);
 
 	// clear OC1A, OC1B on compare
-   	TCCR1A |= (1<<COM1A1) | (1<<COM1B1);                 
-
-	// TOP=ICR1
-   	ICR1 = 10000;                     		
+   	TCCR1A |= (1<<COM1A1) | (1<<COM1B1);                                  		
 	
 	sei();
 }
