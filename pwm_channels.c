@@ -58,7 +58,7 @@ void fan_timer1_init()  /* WORK IN PROGRESS */
     	// 
    	TCCR1A  = (1<<WGM10);
    	TCCR1B  = (1<<WGM12);   
-   	TCCR1B |= (1<<CS10);
+   	TCCR1B |= (1<<CS10) | (1<<CS12); // Preskaler 1024
 
 	// clear OC1A, OC1B on compare
    	TCCR1A |= (1<<COM1A1) | (1<<COM1B1);                                  		
