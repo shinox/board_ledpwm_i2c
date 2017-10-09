@@ -59,11 +59,13 @@ void fan_timer1_init()
                | (1<<COM1B1);             // Wave Form Generation is Fast PWM 8 Bit,
     	TCCR1B = (1<<WGM12)/*|(1<<CS12)*/     // OC1A and OC1B are cleared on compare match
                |(1<<CS10)/*|(1<<CS11)*/;               // and set at BOTTOM. Clock Prescaler CS12 CS10 is 1024, CS11 is 8, CS10 no preskaler
-// WGM11 and 12 - FastPWM 9bit
-    //OCR1A = 63;                       // Dutycycle of OC1A = 25%
-    //OCR1B = 127;                      // Dutycycle of OC1B = 50%
-    OCR1A = 0;                       // Dutycycle of OC1A = 0%
-    OCR1B = 0;                      // Dutycycle of OC1B = 0%
+// WGM11 and 12 - FastPWM 9bit       
+    	OCR1A = 0;                       // Dutycycle of OC1A = 0%
+    	OCR1B = 0;                      // Dutycycle of OC1B = 0%
+	
+	TCNT1 = 0;			// Initialise the counter
+	
+	sei();
 }
 //
 void timer2_init()
