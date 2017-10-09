@@ -27,10 +27,17 @@ What works:
 1. After power on software will try to slowly rise or dimm brightness of all connected LEDs depending on DAY/NIGHT settings in "conf.h", 
 2. Time is obtained by connecting to ds3231 RTC module using SDA/SCL pins (TWI/I2C). The TOP brightness then will be saved to AT24C32 flash onboard DS3231 module,
 3. When DEBUG and SIM enabled ( = 1) the software will demonstrate rising and falling brightness - demo mode,
+4. WHen RTC connected Live mode works very well,
 
 What does not work:
 1. Communication protocol(UART) between The Board and ns8266 WiFi module need a lot tuning - probably redefining too,
 2. Simulation only works if DEBUG and SIM enabled, RTC simulation is not implemented at all !!!
-3. Real life mode works very well providing all modules connected,
-4. Requires connection to DS3231 RTC module for Live operation (DEBUG = 0 and SIM = 0),
- 
+3. Requires connection to DS3231 RTC module for Live operation (DEBUG = 0 and SIM = 0),
+
+Wish list:
+1. FAN controll based on temperature reading from DS3231,
+2. Second Temperature probe ?,
+3. Communication with ns8266 via UART need re-organising or re-defining,
+4. WebUI after ns... connected,
+5. External LCD or button controlls (but why if already fully auto)???,
+6. Ability for adaptive light based on Weather, 
