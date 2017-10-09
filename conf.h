@@ -2,8 +2,9 @@
 //#define F_CPU          16000000L // This does not work !!!
 #define UART_BAUD      38400 // For 8MHz 9600, 19.2K, 38.4K have 0.2% error
 //
-#define DEBUG          0
-#define SIM            0
+#define DEBUG          1 // By default to show rising and dimming
+#define SIM            1 // Currently AT24C32 functionality is slightly different from simavr i2c approach 
+			 // hence need to distinguish between sim mode and live operations
 //
 #define LOOP_DELAY     2000
 // Top counter value (OC0 = TOP), Very Important Choice !!!
