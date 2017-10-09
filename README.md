@@ -5,7 +5,7 @@ based on simavr, Atmega32 test of pwm dimming LED and FAN control,
 
 To try:
 
-    Clone to "simavr/examples/" then make.
+    Cd to "simavr/examples/" then clone and "make".
 
 Idea to test ability of Atmega32 to software PWM 10x 10W LED lights and cooling FANs, providing cheap light alternative for Marine Aquarium.
 
