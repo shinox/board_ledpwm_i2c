@@ -75,7 +75,7 @@ long time_delay = 5; // used in pwm_channels.c dimmer()
 #else
 long time_delay = 56; // ((HALF_DELAY_PERIOD * 60)/(LOOP_DELAY * TOP)); // for 2s loops half brightness reached - depends from choice of TOP
 #endif
-uint8_t fan_a_duty = FAN_A_DUTY, fan_b_duty = FAN_B_DUTY;
+uint8_t fan_a_duty = FAN_A_DUTY, fan_b_duty = FAN_B_DUTY; // All in conf.h
 
 // Prototypes
 void ledpwm_timer0_init();
