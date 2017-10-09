@@ -1,7 +1,7 @@
 # board_ledpwm_i2c
 based on simavr, Atmega32 test of pwm dimming LED and FAN control,
 
-NO WARRANTY IS OFFERED NOR ANY RESPONSIBILITY TAKEN FOR USAGE OF THIS CODE AND OR HARDWARE DESIGN !!!
+#H1 NO WARRANTY IS OFFERED NOR ANY RESPONSIBILITY TAKEN FOR USAGE OF THIS CODE AND OR HARDWARE DESIGN !!!
 
 To try:
     Clone to "simavr/examples/" then make.
