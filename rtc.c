@@ -1,4 +1,4 @@
-/*
+/* !!! HEAVILY BASED ON: !!!
  * DS RTC Library: DS1307 and DS3231 driver library
  * (C) 2011 Akafugu Corporation
  *
@@ -71,8 +71,7 @@
 #include <avr/io.h>
 
 #include "rtc.h"
-#include "twimaster.h"
-#include "../conf.h"
+#include "conf.h"
 
 #define RTC_ADDR 0x68 // I2C address
 #define CH_BIT 7 // clock halt bit
@@ -338,8 +337,8 @@ byte lowAddressByte(word address)
  each data word. The higher data word address bits are not incremented, retaining the
  memory page row location. When the word address, internally generated, reaches the
  page boundary, the following byte is placed at the beginning of the same page. If more
- than 32 data words are transmitted to the EEPROM, the data word address will ¿roll
- over¿ and previous data will be overwritten.
+ than 32 data words are transmitted to the EEPROM, the data word address will Â¿roll
+ overÂ¿ and previous data will be overwritten.
  ACKNOWLEDGE POLLING:
  Once the internally-timed write cycle has started and the
  EEPROM i
@@ -356,16 +355,16 @@ byte lowAddressByte(word address)
  CURRENT ADDRESS READ:
  The internal data word address counter maintains the last
  address accessed during the last read or write operation, incremented by one. This address
- stays valid between operations as long as the chip power is maintained. The address ¿roll
- over¿ during read is from the last byte of the last memory page, to the first byte of the first
- page. The address ¿roll over¿ during write is from the last byte of the current page to the first
+ stays valid between operations as long as the chip power is maintained. The address Â¿roll
+ overÂ¿ during read is from the last byte of the last memory page, to the first byte of the first
+ page. The address Â¿roll overÂ¿ during write is from the last byte of the current page to the first
  byte of the same page.
  Once the device address with the read/write select bit set to one is clocked in and acknowl-
  edged by the EEPROM, the current address data word is serially clocked out. The
  microcontroller does not respond with an input zero but does generate a following stop condi-
  tion (refer to Figure 4).
  RANDOM READ: 
- A random read requires a ¿dummy¿ byte write sequence to load in the data
+ A random read requires a Â¿dummyÂ¿ byte write sequence to load in the data
  word address. Once the device address word and data word address are clocked in and
  acknowledged by the EEPROM, the microcontroller must generate another start condition.
  The microcontroller now initiates a current address read by sending a device address with the
@@ -378,7 +377,7 @@ byte lowAddressByte(word address)
  acknowledge. As long as the EEPROM receives an acknowledge, it will continue to increment
  the data word address and serially clock out sequential data words. When the memory
  address limit is reached, the data word addre
- ss will ¿roll over¿ and the sequential read will con-
+ ss will Â¿roll overÂ¿ and the sequential read will con-
  tinue. The sequential read operation is terminated when the microcontroller does not respond
  with a zero but does generate a following stop condition (refer to Figure 6)
  */
