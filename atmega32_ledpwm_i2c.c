@@ -31,7 +31,7 @@ AVR_MCU(F_CPU, "atmega32");
 #include "../shared/twimaster.h"
 
 #include "conf.h"
-#include "rtc-library-gcc/rtc.h"
+#include "rtc.h"
 #include "uart.h"
 //
 // eample putchar UART usage, Works on FreeBSD better !!!
