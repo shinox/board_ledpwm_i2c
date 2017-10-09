@@ -53,15 +53,11 @@ ISR (TIMER0_COMP_vect)
 //
 void fan_timer1_init()  /* WORK IN PROGRESS */
 {
-	DDRD = 0x30;                      // Set Port D4 and d5 as Output
-    
+	DDRD |= (1<<PD4) | (1<<PD5);                      // Set Port D4 and d5 as Output    
     	// 
-   	TCCR1A  = (1<<WGM10);
-   	TCCR1B  = (1<<WGM12);   
-   	TCCR1B |= (1<<CS10) | (1<<CS12); // Preskaler 1024
-
-	// clear OC1A, OC1B on compare
-   	TCCR1A |= (1<<COM1A1) | (1<<COM1B1);                                  		
+   	TCCR1A |= (1<<WGM10)
+	       | (1<<COM1A1) | (1<<COM1B1);                                  		   	
+   	TCCR1B |= (1<<CS10) | (1<<WGM12); // 
 	
 	sei();
 }
