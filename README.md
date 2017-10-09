@@ -9,7 +9,7 @@ Idea to test ability of Atmega32 to software PWM 10x 10W LED lights and cooling 
    Mode achieved by setting the CTC mode for timer0 then using two vectors, OVF to conroll the PWM and COMP to reset timer when desired TOP value reached, Here TOP is set to be 32 due to software pwm speed limitation. Overflow happens every 256 CPU cycles what for fastpwm mode is frequency=fcpu/256/256 ~122Hz because Timer0 is 8 bit and maximum count value is 256, when 32 is chosen in theory this should give frequency=fcpu/256/32 ~976Hz at a cost of very low resolution of approx 32 steps to max PWM.
     The value is confirmed by examination of .vcd file in gtkwave, the period is 1024us = 0.001024s i.e. 1 / 0.001024 = 976Hz.
     
-gtkwave: !(https://github.com/shinox/board_ledpwm_i2c/blob/master/gtkvawe.png)
+gtkwave:[[https://github.com/shinox/board_ledpwm_i2c/blob/master/gtkvawe.png]]
 
 The Hardware:
 * EasyEDA for final PCB design and development of the board: 
