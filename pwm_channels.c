@@ -51,7 +51,7 @@ ISR (TIMER0_COMP_vect)
 }
 */
 //
-void fan_timer1_init()
+void fan_timer1_init()  /* WORK IN PROGRESS */
 {
 	DDRD = 0x30;                      // Set Port D4 and d5 as Output
     
