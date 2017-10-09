@@ -10,7 +10,7 @@ Idea to test ability of Atmega32 to software PWM 10x 10W LED lights and cooling 
     The value is confirmed by examination of .vcd file in gtkwave, the period is 1024us = 0.001024s i.e. 1 / 0.001024 = 976Hz.
     
 gtkwave: 
-![alt text](https://github.com/shinox/board_ledpwm_i2c/edit/master/gtkwave.png "Logo Title Text 1")
+
 
 The Hardware:
 * EasyEDA for final PCB design and development of the board: 
