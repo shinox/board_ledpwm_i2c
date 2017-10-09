@@ -40,9 +40,9 @@ include ../Makefile.opengl
 
 atmega32_${target}.axf: atmega32_${target}.c \
 	twimaster.c \
-	LED/pwm_channels.c \
-	LED/rtc-library-gcc/rtc.c \
-	LED/uartlibrary/uart.c
+	pwm_channels.c \
+	rtc.c \
+	uart.c
 atmega32_${target}.axf: ${simavr}/examples/shared/avr_twi_master.c
 atmega32_${target}.axf: ${simavr}/examples/shared/avr_twi_master.h
 
