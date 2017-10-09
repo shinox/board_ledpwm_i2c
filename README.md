@@ -6,7 +6,7 @@ based on simavr, Atmega32 test of pwm dimming LED and FAN control,
 Idea to test ability of Atmega32 to software PWM 10x 10W LED lights and cooling FANs, providing cheap light alternative for Marine Aquarium.
 
    It is based on various other projects, mainly "simavr" for testing and core functionality, AVR note 136 (AVR136) modified to supply ~1953Hz PWM,
-   Mode achieved by setting the FastPWM mode for timer0 then using two vectors, OVF to conroll the PWM and COMP to reset timer when desired TOP value reached, Here TOP is set to be 16 due to software pwm speed limitation. Overflow happens every 256 CPU cycles what for fastpwm mode is frequency=fcpu/256/256 ~122Hz because Timer0 is 8 bit and maximum count value is 256, when 16 is chosen in theory this should give frequency=fcpu/256/16 ~1953Hz at a cost of very low resolution of approx 16 steps to max PWM.
+   Mode achieved by setting the "Normal" mode "No Preskaler" for timer0 then using two vectors, OVF to conroll the PWM and COMP to reset timer when desired TOP value reached, Here TOP is set to be 16 due to software pwm speed limitation. Overflow happens every 256 CPU cycles what for fastpwm mode is frequency=fcpu/256/256 ~122Hz because Timer0 is 8 bit and maximum count value is 256, when 16 is chosen in theory this should give frequency=fcpu/256/16 ~1953Hz at a cost of very low resolution of approx 16 steps to max PWM.
     The value is confirmed by examination of .vcd file in gtkwave, the period is ~513us = 0.000513s i.e. 1 / 0.000513 = 1949Hz.
 
 The Hardware:
