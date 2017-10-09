@@ -55,9 +55,9 @@ void fan_timer1_init()  /* WORK IN PROGRESS */
 {
 	PORTD = (1 << PD4)|(1 << PD5);                      // Set Port D4 and d5 as Output    
     	// 
-   	TCCR1A |= (1<<WGM10)				    // 9 bit
+   	TCCR1A |= (1<<WGM10)				    // 8 bit, WGM11 9-bit
 	       | (1<<COM1A0) | (1<<COM1B0);                 // Toggle on match
-   	TCCR1B |= (1<<CS10) | (1<<WGM12); // 
+   	TCCR1B |= (1<<CS10) | (1<<WGM12); 		    // CS10 No preskaler
 	
 	sei();
 }
