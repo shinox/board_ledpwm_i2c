@@ -19,7 +19,7 @@
 #include <stdbool.h>
 #include <avr/io.h>
 
-#include "twimaster.h"
+#include "../shared/twimaster.h"
 
 #define DS1307_SLAVE_ADDR 0b11010000
 
