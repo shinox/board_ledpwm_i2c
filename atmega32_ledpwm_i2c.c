@@ -244,17 +244,20 @@ void uartRecvString() { /* Got that from Arduino esp8266 */
 
 //
 int convertTime(struct tm* ttime) {// THIS IS WRONG AND WILL NOT WORK IN A LONG RUN !!!
-	long btime = ttime->hour * 100000000 
-		+ ttime->min * 1000000
-		+ ttime->mday * 10000
-		+ ttime->mon * 100
-		+ ttime->year;
 
-	long ctime = time->hour * 100000000 
-		+ time->min * 1000000
-		+ time->mday * 10000
-		+ time->mon * 100
-		+ time->year;
+	long btime = ttime->year * 100000000
+		   + ttime->mon * 1000000
+		   + ttime->mday * 10000
+                   + ttime->hour * 100 
+		   + ttime->min 
+		   ;
+
+	long ctime = time->year * 100000000
+		   + time->mon * 1000000
+		   + time->mday * 10000
+                   + time->hour * 100 
+		   + time->min
+		   ;
 
 	int stuff = 0;
 	if ( ctime > btime ) stuff = 1;
@@ -337,13 +340,19 @@ void requestLedArray() { // This requires some work/thought <NOTE>
 	if       (  size_of_received > 7
 			&& strstr(receivedChars, "RECEIV:")
 		 ) {
-		uint8_t pos = 9; // Start cutting the string from
+		uint8_t pos = 7, step = 1, charCount, charBuf; // Start cutting the string from
 		for (uint8_t i = 0; i < CHMAX; i++) { // This is 1 by one why not send all at once ??
 			//copy from srt[start]
 			//strlcpy(led, &receivedChars[7], 1);
 			// led = receivedChars[7];
-			strlcpy(ledBuf, &receivedChars[pos], 2);
-			ledBuf[2] = '\0'; // Not sure if strlcpy does this already !!!
+			charCount = 0;
+			while (charBuf != ':') {
+			    strlcpy(charBuf, &receivedChars[pos], step); //
+			    ledBuf[charCount] = charBuf;
+			    pos += step;
+			    charCount++;
+			} 			//
+			ledBuf[2] = '\0'; //
 			ledVal = atoi(ledBuf);
 			if (ledVal > 0 && top_brightness[i] != ledVal) { // > 
 				top_brightness[i] = ledVal; // Investigate the 
@@ -353,7 +362,6 @@ void requestLedArray() { // This requires some work/thought <NOTE>
 				printf("<TOP VAL: %d>\n\r", top_brightness[i]);
 #endif
 			}
-			pos +=2;
 		}
 		saveTopBrightness(); // 
 	}
@@ -432,6 +440,3 @@ void updateTopFromEE() { // For now two similar funcmtions (above )
 	printf(">\n\r");
 #endif
 }
-
-
-
