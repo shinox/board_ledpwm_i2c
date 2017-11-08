@@ -352,7 +352,7 @@ void requestLedArray() { // This requires some work/thought <NOTE>
 			    pos += step;
 			    charCount++;
 			} 			//
-			ledBuf[2] = '\0'; //
+			ledBuf[charCount] = '\0'; //
 			ledVal = atoi(ledBuf);
 			if (ledVal > 0 && top_brightness[i] != ledVal) { // > 
 				top_brightness[i] = ledVal; // Investigate the 
