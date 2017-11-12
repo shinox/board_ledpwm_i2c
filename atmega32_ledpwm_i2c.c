@@ -288,13 +288,27 @@ void getNTP(struct tm* time) {
 	char hur[2], min[2], sec[2];
 	if(strstr(receivedChars, "NTP_IS:"));
 	{
+                uint8_t h_len = 1
+		      , m_len = 1
+		      , s_len = 1      // Cheat
+		      , start_from = 7
+		      ;
 		//copy from srt[start]
-		strlcpy(hur, &receivedChars[7], 2); // use strlcpy instead of strncpy !!!
-		hur[2] = '\0';
-		strlcpy(min, &receivedChars[10], 2);
-		min[2] = '\0';
-		strlcpy(min, &receivedChars[13], 2);
-		sec[2] = '\0';
+		if (receivedChars[start_from + 2] == ':') { // SIMPLIFY/REFINE ???
+		    h_len = 2;
+		    if (receivedChars[(start_from + h_len + 3)] == ':') { 
+		        m_len = 2;
+		    }
+		} else {
+		    if (receivedChars[(start_from + h_len + 3)] == ':') m_len = 2;
+		}
+
+		strlcpy(hur, &receivedChars[start_from], h_len); // use strlcpy instead of strncpy !!! MIND THE FORMAT OF RECEIVED TIME !!!
+		hur[h_len] = '\0';
+		strlcpy(min, &receivedChars[(start_from + h_len + 1)], m_len);
+		min[m_len] = '\0';
+		strlcpy(min, &receivedChars[(start_from + h_len + m_len + 2)], s_len); // This will always be out of sync
+		sec[s_len] = '\0';
 
 		time->hour = atoi(hur);
 		time->min  = atoi(min);
