@@ -285,7 +285,6 @@ void getNTP(struct tm* time) {
 	*/
 
 	//char *pch = strstr(buf, "NTPGET");
-	char hur[2], min[2], sec[2];
 	if(strstr(receivedChars, "NTP_IS:"));
 	{
                 uint8_t h_len = 1
@@ -303,6 +302,8 @@ void getNTP(struct tm* time) {
 		    if (receivedChars[(start_from + h_len + 3)] == ':') m_len = 2;
 		}
 
+	        char hur[h_len], min[m_len], sec[s_len];
+
 		strlcpy(hur, &receivedChars[start_from], h_len); // use strlcpy instead of strncpy !!! MIND THE FORMAT OF RECEIVED TIME !!!
 		hur[h_len] = '\0';
 		strlcpy(min, &receivedChars[(start_from + h_len + 1)], m_len);
@@ -313,6 +314,8 @@ void getNTP(struct tm* time) {
 		time->hour = atoi(hur);
 		time->min  = atoi(min);
 		time->sec  = atoi(sec);
+
+	        printf("<%s%s%s>", hur, min, sec);
 	}
 	//strlcpy (pch,"NTPGET",6);
 	//
@@ -323,7 +326,6 @@ void getNTP(struct tm* time) {
 	   uart_puts(sec);
 	   uart_putc('>');
 	   */
-	printf("<%s%s%s>", hur, min, sec);
 }
 //
 void updateLedArray() { /* This only sends current state of the led array */
@@ -361,12 +363,12 @@ void requestLedArray() { // This requires some work/thought <NOTE>
 			// led = receivedChars[7];
 			charCount = 0;
 			while (charBuf != ':') {
-			    strlcpy(charBuf, &receivedChars[pos], step); //
+			    strlcpy(charBuf, &receivedChars[pos], step); // what if values are less than 10 ???, Build string with separators and parser!!!
 			    ledBuf[charCount] = charBuf;
 			    pos += step;
 			    charCount++;
 			} 			//
-			ledBuf[charCount] = '\0'; //
+			ledBuf[charCount] = '\0'; // 
 			ledVal = atoi(ledBuf);
 			if (ledVal > 0 && top_brightness[i] != ledVal) { // > 
 				top_brightness[i] = ledVal; // Investigate the 
@@ -454,3 +456,4 @@ void updateTopFromEE() { // For now two similar funcmtions (above )
 	printf(">\n\r");
 #endif
 }
+
