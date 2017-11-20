@@ -8,7 +8,7 @@
 //
 #define LOOP_DELAY     2000
 // Top counter value (OC0 = TOP), Very Important Choice !!!
-#define TOP	       16 // 64 = 2xPWM softw freq, 32 = 4x softw PWM freq, 16 = 8x but only 16 steps 
+#define TOP	       32 // 64 = 2xPWM softw freq, 32 = 4x softw PWM freq, 16 = 8x but only 16 steps 
 // Calculation depends strictly from OCR0 value, 64 ~= 50% for OCR0 = TOP = 127
 //
 #define NIGHTMODE      1       // Roughly value of 10% for choosen TOP = 32 value
@@ -23,13 +23,13 @@
 #define MOR            8
 #define EVE            19
 //
-#define CHMAX          10    // maximum number of PWM channels, 9 LED, ?? 2 FAN, -1
-#define SKIP_LAST_LEDS 2  // in case any number of last led avoided, here using only first 8 LED, not using these for FAN anymore hence 2 instead of 4
-#define USELED (CHMAX - SKIP_LAST_LEDS)
+#define CHMAX          10    // maximum number of PWM channels, 10 LED, -1
+#define SKIP_LAST_LEDS 0  // in case any number of last led avoided, here using only first 8 LED, not using these for FAN anymore hence 2 instead of 4
+#define USELED         (CHMAX - SKIP_LAST_LEDS) //
 // NULL defined
-#define NULL ( (void *) 0) // or #define NULL 0
+#define NULL           ( (void *) 0) // or #define NULL 0
 // Size of A
-#define ARRAY_SIZE(a) (sizeof(a)/(sizeof(a[0])))
+#define ARRAY_SIZE(a)  ((sizeof(a)/sizeof(a[0])))
 // Uart Receive
 typedef unsigned char byte;
 typedef _Bool         boolean; // In C99 _Bool is bool otherwise include stdbool.h 
