@@ -40,7 +40,7 @@ extern uint8_t        brightness_threshold;
 extern uint8_t        top_brightness[CHMAX]; // 
 extern uint8_t        brightness[CHMAX];
 extern long           time_counter;
-extern uint8_t        MORNING, EVENING;
+extern uint8_t        MORNING, EVENING, MORNING_END, EVENING_END;
 extern uint8_t        set_hour, set_minute, set_sec;
 extern struct         tm* time;
 //
