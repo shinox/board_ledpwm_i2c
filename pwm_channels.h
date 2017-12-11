@@ -40,7 +40,7 @@ unsigned char compare[CHMAX] = {0};
 volatile unsigned char compbuff[CHMAX] = {0};
 
 // Which leds to use, might be useful later on in case weather liht adaptations
-uint8_t light[USELED] = { TRUE
+uint8_t light[CHMAX] =  { TRUE
 			, TRUE
 			, TRUE
 			, TRUE
@@ -67,7 +67,7 @@ uint8_t top_brightness[CHMAX] = { TOP_BR
 //				,/*FAN_A*/TOP_BR // PWM too slow for one of the fans, moved to OCR1A and B - PD4 and 5
 //				,/*FAN_B*/TOP_BR //
 				}; // Contain startup values for FAN - last two 
-uint8_t brightness[USELED] =  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+uint8_t brightness[CHMAX] =  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 struct tm* time = NULL;
 uint8_t MORNING = MOR, EVENING = EVE;
 uint8_t set_hour = 12, set_minute = 30, set_sec = 0;
