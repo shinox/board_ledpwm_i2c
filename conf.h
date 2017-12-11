@@ -38,7 +38,7 @@ extern long           time_delay; // The number of counter loops required to tri
 // look into pwm_channels.c (h) dimmer() function and defines
 extern uint8_t        brightness_threshold;
 extern uint8_t        top_brightness[CHMAX]; // 
-extern uint8_t        brightness[USELED];
+extern uint8_t        brightness[CHMAX];
 extern long           time_counter;
 extern uint8_t        MORNING, EVENING;
 extern uint8_t        set_hour, set_minute, set_sec;
