@@ -143,7 +143,7 @@ void set_fan_pwm(uint8_t fan_a_duty, uint8_t fan_b_duty)
 void dimmer(uint8_t incr_brightness)
 {
 	if (time_counter >= time_delay) {
-		for (int channel = 0; channel < USELED; channel++) 
+		for (int channel = 0; channel < CHMAX; channel++) 
 		{
 			if ( incr_brightness == TRUE 
 					&& light[channel] == TRUE 
