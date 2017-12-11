@@ -25,7 +25,6 @@
 //
 #define CHMAX          10    // maximum number of PWM channels, 10 LED, -1
 #define SKIP_LAST_LEDS 0  // in case any number of last led avoided, here using only first 8 LED, not using these for FAN anymore hence 2 instead of 4
-#define USELED         (CHMAX - SKIP_LAST_LEDS) //
 // NULL defined
 #define NULL           ( (void *) 0) // or #define NULL 0
 // Size of A
