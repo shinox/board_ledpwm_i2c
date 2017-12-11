@@ -69,7 +69,7 @@ uint8_t top_brightness[CHMAX] = { TOP_BR
 				}; // Contain startup values for FAN - last two 
 uint8_t brightness[CHMAX] =  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 struct tm* time = NULL;
-uint8_t MORNING = MOR, EVENING = EVE; MORNING_END = MOR + 1, EVENING_END = EVE + 1;
+uint8_t MORNING = MOR, EVENING = EVE, MORNING_END = MOR + 1, EVENING_END = EVE + 1;
 uint8_t set_hour = 12, set_minute = 30, set_sec = 0;
 long time_counter = 0;
 #if DEBUG
