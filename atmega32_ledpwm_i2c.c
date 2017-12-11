@@ -128,9 +128,11 @@ int main()
 
 		if (loops == ntp_delay) { // I am sure there is better way but not critical for now
 			//
+#if !SIM			
 			getNTP(rtc_time);
 			if ( convertTime(rtc_time) == 1 )
 				rtc_set_time_s(rtc_time->hour, rtc_time->min, rtc_time->sec);
+#endif			
 			loops = 0;
 		}
 //#if !SIM	    
