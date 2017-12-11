@@ -178,7 +178,7 @@ int main()
 //
 //
 //
-void communicate(char command[], int val1, int val2)
+void communicate(char command[], int val1, int val2) //
 {
 	/*
 	   char messageBuf[32] = {0};
