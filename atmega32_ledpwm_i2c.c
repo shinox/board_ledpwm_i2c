@@ -1,3 +1,4 @@
+
 /*
    simavr is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -159,7 +160,7 @@ int main()
 			dimmer(FALSE);
 		}
 		else if (time->hour >= MORNING+1 && time->hour <= EVENING) {
-			for (int i = 0; i < USELED; i++){
+			for (int i = 0; i < CHMAX; i++){
 				if (compbuff[i] != top_brightness[i])
 					set_diode_pwm(i, top_brightness[i]);
 			}
@@ -330,7 +331,7 @@ void getNTP(struct tm* time) {
 //
 void updateLedArray() { /* This only sends current state of the led array */
 	// Only 8 LED is going to be used for now hence -2
-	for (int i = 0; i < USELED; i++){
+	for (int i = 0; i < CHMAX; i++){
 		// Send current LED state
 		communicate("SETLED:", i, compbuff[i]); //
 	}
@@ -387,28 +388,28 @@ void saveTopBrightness() {// ??? What, to save eeprom from quick death it has to
 	// For instance button from web etc.
 	// And run after requestLedArray() or inside;
 	//
-	uint8_t eepromReceived[USELED];
+	uint8_t eepromReceived[CHMAX];
 	//
 	eeprom_rread_data( EEPROM_LED_PAGE     
 			, EEPROM_LED_ADDR
 			, eepromReceived
-			, USELED);
+			, CHMAX);
 	//
 #if DEBUG
 	printf("From EEPROM: ");
-	for (int i = 0; i < USELED; i++){
+	for (int i = 0; i < CHMAX; i++){
 		printf("%d", eepromReceived[i]);
 	}
 	printf("\n\r");
 	printf("Top Brightness: ");
-	for (int i = 0; i < USELED; i++){
+	for (int i = 0; i < CHMAX; i++){
 		printf("%d", top_brightness[i]);
 	}
 	printf("\n\r");
 #endif
 	//
 	// Only 8 LED is going to be used for now hence -2
-	for (int i = 0; i < USELED; i++){
+	for (int i = 0; i < CHMAX; i++){
 		if ( top_brightness[i] != eepromReceived[i] ) {
 			eepromReceived[i] = top_brightness[i];
 			eeprom_write_byte( EEPROM_LED_PAGE // SOMETHING WRONG HERE !!  
@@ -419,7 +420,7 @@ void saveTopBrightness() {// ??? What, to save eeprom from quick death it has to
 	}
 #if DEBUG
 	printf("Saved to EEPROM: ");
-	for (int i = 0; i < USELED; i++){
+	for (int i = 0; i < CHMAX; i++){
 		printf("%d", eepromReceived[i]);
 	}
 	printf("\n\r");
@@ -428,14 +429,14 @@ void saveTopBrightness() {// ??? What, to save eeprom from quick death it has to
 
 void updateTopFromEE() { // For now two similar funcmtions (above )
 	//
-	uint8_t eepromReceived[USELED];
+	uint8_t eepromReceived[CHMAX];
 	//
 	eeprom_rread_data( EEPROM_LED_PAGE     
 			, EEPROM_LED_ADDR
 			, eepromReceived
-			, USELED);
+			, CHMAX);
 	//
-	for (int i = 0; i < USELED; i++){
+	for (int i = 0; i < CHMAX; i++){
 		if (  eepromReceived[i] > 0 
 				&& eepromReceived[i] < TOP /* To avoid accidental values of min/max */
 
@@ -444,16 +445,15 @@ void updateTopFromEE() { // For now two similar funcmtions (above )
 
 #if DEBUG
 	printf("<EEPROM REC: ");
-	for (int i = 0; i < USELED; i++){
+	for (int i = 0; i < CHMAX; i++){
 		printf("%d", eepromReceived[i]);
 	}
 	printf(">\n\r");
 	//
 	printf("<TOP BRIGHTNESS: ");
-	for (int i = 0; i < USELED; i++){
+	for (int i = 0; i < CHMAX; i++){
 		printf("%d", top_brightness[i]);
 	}
 	printf(">\n\r");
 #endif
 }
-
