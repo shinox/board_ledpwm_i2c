@@ -151,15 +151,15 @@ int main()
 		}	    
 #else
 		// Start dimming or brightning up
-		if (time->hour >= MORNING && time->hour <= MORNING+1) {
+		if (time->hour >= MORNING && time->hour <= MORNING_END) {
 			uart_puts("<Rise and shine>\n\r");
 			dimmer(TRUE);
 		}  
-		else if (time->hour >= EVENING && time->hour <= EVENING+1) {
+		else if (time->hour >= EVENING && time->hour <= EVENING_END) {
 			uart_puts("<Time to sleep>\n\r");
 			dimmer(FALSE);
 		}
-		else if (time->hour >= MORNING+1 && time->hour <= EVENING) {
+		else if (time->hour >= MORNING_END && time->hour <= EVENING) {
 			for (int i = 0; i < CHMAX; i++){
 				if (compbuff[i] != top_brightness[i])
 					set_diode_pwm(i, top_brightness[i]);
