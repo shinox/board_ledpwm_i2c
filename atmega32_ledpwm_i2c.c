@@ -152,11 +152,11 @@ int main()
 #else
 		// Start dimming or brightning up
 		if (time->hour >= MORNING && time->hour <= MORNING_END) {
-			uart_puts("<Rise and shine>\n\r");
+			printf("<Rise and shine>");			
 			dimmer(TRUE);
 		}  
 		else if (time->hour >= EVENING && time->hour <= EVENING_END) {
-			uart_puts("<Time to sleep>\n\r");
+			printf("<Time to sleep>");
 			dimmer(FALSE);
 		}
 		else if (time->hour >= MORNING_END && time->hour <= EVENING) {
