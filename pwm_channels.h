@@ -48,6 +48,8 @@ uint8_t light[USELED] = { TRUE
 			, TRUE
 			, TRUE
 			, TRUE
+			, TRUE
+			, TRUE	
 			}; // Make sure You know what USELED is at the time of adding another value
 
 // 
@@ -65,7 +67,7 @@ uint8_t top_brightness[CHMAX] = { TOP_BR
 //				,/*FAN_A*/TOP_BR // PWM too slow for one of the fans, moved to OCR1A and B - PD4 and 5
 //				,/*FAN_B*/TOP_BR //
 				}; // Contain startup values for FAN - last two 
-uint8_t brightness[USELED] =  {0, 0, 0, 0, 0, 0, 0, 0};
+uint8_t brightness[USELED] =  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 struct tm* time = NULL;
 uint8_t MORNING = MOR, EVENING = EVE;
 uint8_t set_hour = 12, set_minute = 30, set_sec = 0;
