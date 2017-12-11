@@ -35,7 +35,7 @@ AVR_MCU(F_CPU, "atmega32");
 #include "rtc.h"
 #include "uart.h"
 //
-// eample putchar UART usage, Works on FreeBSD better !!!
+// good for testing
 //
 static int uart_putchar(char c, FILE *stream) {
 	if (c == '\n')
