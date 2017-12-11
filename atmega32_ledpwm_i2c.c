@@ -53,7 +53,7 @@ static FILE mystdout = FDEV_SETUP_STREAM( // Use above if problems detected
 		, _FDEV_SETUP_WRITE);
 //				
 #if DEBUG
-int test = 1;
+int test = TRUE;
 #endif
 //
 extern volatile unsigned char compbuff[CHMAX];
@@ -147,7 +147,7 @@ int main()
 		// Test dimmer funtion,
 		dimmer(test);
 		if (brightness[0] == top_brightness[0]) {
-			test = 0;
+			test = FALSE;
 		}	    
 #else
 		// Start dimming or brightning up
