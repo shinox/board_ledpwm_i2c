@@ -153,7 +153,7 @@ void dimmer(uint8_t incr_brightness)
 			} 
 			else 
 			if (  incr_brightness == FALSE  
-		           && brightness[channel] >= NIGHTMODE)
+		           && brightness[channel] >= NIGHTMODE
 		           ) {
 					set_diode_pwm(channel, brightness[channel]);
 					brightness[channel]-=brightness_threshold;
