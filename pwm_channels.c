@@ -145,37 +145,23 @@ void dimmer(uint8_t incr_brightness)
 	if (time_counter >= time_delay) {
 		for (int channel = 0; channel < CHMAX; channel++) 
 		{
-			if ( incr_brightness == TRUE 
-					&& light[channel] == TRUE 
-
-			   ) { 
-				if (brightness[channel] <= top_brightness[channel]) 
-				{
+			if (  incr_brightness == TRUE 
+			   && brightness[channel] <= top_brightness[channel]
+			   ) { 				
 					set_diode_pwm(channel, brightness[channel]);
-					brightness[channel]+=brightness_threshold;
-				} else {
-					light[channel] = FALSE;
-				}
+					brightness[channel]+=brightness_threshold;				
 			} 
 			else 
-				if ( incr_brightness == FALSE  
-						&& light[channel] == TRUE
-				   ) {
-					if (brightness[channel] >= NIGHTMODE) 
-					{
-						set_diode_pwm(channel, brightness[channel]);
-						brightness[channel]-=brightness_threshold;
-					}
-					else
-					{
-						if (channel < 4) { // NOT FLEXIBLE !!!!
-							set_diode_pwm(channel, 0);
-							light[channel] = FALSE;
-						}
-						else
-							light[channel] = FALSE; // Test this approach !!!
-					}
-				}
+			if (  incr_brightness == FALSE  
+		           && brightness[channel] >= NIGHTMODE)
+		           ) {
+					set_diode_pwm(channel, brightness[channel]);
+					brightness[channel]-=brightness_threshold;
+			 }
+			 else
+			 if (channel < 4) { // NOT FLEXIBLE !!!!
+				        set_diode_pwm(channel, 0);
+				 
 		}
 		time_counter = 0;
 	}
