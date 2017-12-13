@@ -39,19 +39,6 @@ volatile unsigned int count = 0, i =0;
 unsigned char compare[CHMAX] = {0};
 volatile unsigned char compbuff[CHMAX] = {0};
 
-// Which leds to use, might be useful later on in case weather liht adaptations
-uint8_t light[CHMAX] =  { TRUE
-			, TRUE
-			, TRUE
-			, TRUE
-			, TRUE
-			, TRUE
-			, TRUE
-			, TRUE
-			, TRUE
-			, TRUE	
-			}; // Make sure You know what USELED is at the time of adding another value
-
 // 
 uint8_t brightness_threshold = BRIGHTNESS_INCREMENT;
 uint8_t top_brightness[CHMAX] = { TOP_BR
