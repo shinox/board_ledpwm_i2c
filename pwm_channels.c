@@ -159,7 +159,7 @@ void dimmer(uint8_t incr_brightness)
 					brightness[channel]-=brightness_threshold;
 			 }
 			 else
-			 if (channel < 4) { // NOT FLEXIBLE !!!!
+			 if (channel < 4) // NOT FLEXIBLE !!!!
 				        set_diode_pwm(channel, 0);
 				 
 		}
